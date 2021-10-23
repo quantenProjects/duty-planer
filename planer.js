@@ -10,7 +10,7 @@ function update_location_hash() {
     var qr = qrcode(0, "L");
     qr.addData(window.location.toString())
     qr.make()
-    document.getElementById('qrcode').innerHTML = qr.createImgTag(4);
+    document.getElementById('qrcode').innerHTML = qr.createImgTag(2);
 }
 
 function startup() {
@@ -50,10 +50,13 @@ function process_plan() {
         let row = document.createElement("tr")
         let a_duty = document.createElement("td")
         a_duty.innerText = current_plan.workers[(current_plan.offsets[0] + i) % current_plan.workers.length]
+        a_duty.classList.add("duty_a_td")
         let date = document.createElement("td")
-        date.innerText = date_to_str(offset_date_by_weeks(current_plan.start_date, i)) + " to " + date_to_str(offset_date_by_weeks(current_plan.start_date, i, 6)).substring(4)
+        date.innerText = date_to_str(offset_date_by_weeks(current_plan.start_date, i)) + " to " + date_to_str(offset_date_by_weeks(current_plan.start_date, i, 6)).substring(7)
+        date.classList.add("date_td")
         let b_duty = document.createElement("td")
         b_duty.innerText = current_plan.workers[(current_plan.offsets[1] + i) % current_plan.workers.length]
+        b_duty.classList.add("duty_b_td")
         row.appendChild(a_duty)
         row.appendChild(date)
         row.appendChild(b_duty)

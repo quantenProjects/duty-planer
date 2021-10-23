@@ -9,14 +9,28 @@
     <script type="application/javascript" src="common.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" integrity="sha512-ZDSPMa/JM1D+7kdg2x3BsruQ6T/JpJo3jWDWkCZsP+5yVyp1KfESqLI+7RqB5k24F7p2cV7i2YHh/890y6P6Sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+   <link rel="stylesheet" type="text/css" href="planer.css">
+
 </head>
 <body onload="startup();">
-<h1 id="heading">Duty Planer</h1>
-<div id="qrcode"></div>
+<div class="header">
+    <h1>Duty Plan</h1>
+</div>
+<div class="header">
+    <p>To generate the next plan:</p>
+    <ol>
+        <li>Scan the QR-code</li>
+        <li>Send link to laptop</li>
+        <li>Click on "Next Plan"</li>
+        <li>Maybe change settings</li>
+        <li>Print new plan</li>
+    </ol>
+</div>
+<div id="qrcode" class="header" style="float: right"></div>
 <div id="duty_table">
 
 </div>
-<div>
+<div class="no-print">
     <a id="settings_link">Change Settings</a>
     <a id="next_plan_link">Next Plan</a>
 </div>

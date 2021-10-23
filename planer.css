@@ -1,0 +1,39 @@
+.header {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    height: 100%;
+    font-size: 18pt;
+}
+
+td, th {
+    border: 1px solid black;
+}
+
+.date_td {
+    width: 190px;
+}
+
+.duty_a_td {
+    width: auto;
+    text-align: right;
+}
+
+.duty_b_td {
+    width: auto;
+    text-align: left;
+}
+
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
