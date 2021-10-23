@@ -1,6 +1,7 @@
 var hash
 var current_plan
 var next_plan
+var qrcode
 
 window.onhashchange = startup
 
@@ -10,6 +11,10 @@ function generate_hash(object) {
 
 function update_location_hash() {
     window.location.hash = "#" + generate_hash(current_plan)
+    var qr = qrcode(0, "L");
+    qr.addData(window.location.toString())
+    qr.make()
+    document.getElementById('qrcode').innerHTML = qr.createImgTag(4);
 }
 
 function offset_date_by_weeks(date, weeks, days = 0) {
@@ -53,6 +58,18 @@ function process_plan() {
     const weeks_per_sheet = 26
     document.getElementById("duty_table").innerHTML = ""
     let table = document.createElement("table")
+    let top_row = document.createElement("tr")
+    let a_duty_title = document.createElement("th")
+    a_duty_title.innerText = current_plan.duties[0]
+    let date_title = document.createElement("th")
+    date_title.innerText = "Date"
+    let b_duty_title = document.createElement("th")
+    b_duty_title.innerText = current_plan.duties[1]
+    top_row.appendChild(a_duty_title)
+    top_row.appendChild(date_title)
+    top_row.appendChild(b_duty_title)
+    table.appendChild(top_row)
+
     console.log(current_plan.start_date)
 
     for (let i = 0; i < weeks_per_sheet; i++) {
