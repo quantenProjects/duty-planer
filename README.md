@@ -12,3 +12,7 @@ To generate the next plan, just click on the next plan link.
 
 * leap seconds may not be considered…
 * currently only exactly two duties are possible to define
+
+## Contribution
+
+Suggestions, design adjustments and PRs are appreciated!
