@@ -4,6 +4,7 @@ var current_plan
 function startup() {
     load_hash_data()
     url_to_form()
+    form_to_url()
 }
 
 function onformchange() {
@@ -49,13 +50,13 @@ function form_to_url() {
         document.getElementById("error_list").style = "color:green"
         document.getElementById("plan_link").href = "./planer.html#" + generate_hash(current_plan)
         document.getElementById("plan_link").innerText = "Link to Plan"
-        window.location.hash = "#" + generate_hash(current_plan)
+        history.replaceState(null, null, "#" + generate_hash(current_plan))
     } else {
         document.getElementById("error_list").innerText = error_list
         document.getElementById("error_list").style = "color:red"
         document.getElementById("plan_link").removeAttribute("href")
         document.getElementById("plan_link").innerText = "There are errors"
-        window.location.hash = ""
+        history.replaceState(null, null, "#")
     }
 }
 

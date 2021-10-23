@@ -11,21 +11,21 @@
     <div>
         <p><label for="workers">Workers</label></p>
         <p>one worker per line</p>
-        <textarea id="workers" onchange="onformchange()"></textarea>
+        <textarea id="workers" oninput="onformchange()"></textarea>
     </div>
     <div>
         <p><label for="duties">Duties</label></p>
         <p>one duty name per line, currently only exactly two are supported</p>
-        <textarea id="duties" onchange="onformchange()"></textarea>
+        <textarea id="duties" oninput="onformchange()"></textarea>
     </div>
     <div>
         <p><label for="offsets">Offsets</label></p>
         <p>offsets for the duties, must be the same number of lines as duties, start counting from 0</p>
-        <textarea id="offsets" onchange="onformchange()"></textarea>
+        <textarea id="offsets" oninput="onformchange()"></textarea>
     </div>
     <div>
         <label for="start_date">Start Date</label>
-        <input type="date" id="start_date" onchange="onformchange()">
+        <input type="date" id="start_date" oninput="onformchange()">
     </div>
 </div>
 <p><a id="plan_link" target="_blank">Link to Plan</a></p>
