@@ -1,6 +1,6 @@
 # duty-planer
 
-A simple Webbapp to generate a duty plan for a e.g. flatshare.
+A simple webapp to generate a duty plan for e.g. a flatshare.
 
 Go to the settings page and adjust the values, then open the plan and print it.
 
