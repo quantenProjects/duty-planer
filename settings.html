@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings Planer</title>
+    <script type="application/javascript" src="settings.js"></script>
+    <script type="application/javascript" src="common.js"></script>
+</head>
+<body onload="startup()">
+<div>
+    <div>
+        <p><label for="workers">Workers</label></p>
+        <p>one worker per line</p>
+        <textarea id="workers" onchange="onformchange()"></textarea>
+    </div>
+    <div>
+        <p><label for="duties">Duties</label></p>
+        <p>one duty name per line, currently only exactly two are supported</p>
+        <textarea id="duties" onchange="onformchange()"></textarea>
+    </div>
+    <div>
+        <p><label for="offsets">Offsets</label></p>
+        <p>offsets for the duties, must be the same number of lines as duties, start counting from 0</p>
+        <textarea id="offsets" onchange="onformchange()"></textarea>
+    </div>
+    <div>
+        <label for="start_date">Start Date</label>
+        <input type="date" id="start_date" onchange="onformchange()">
+    </div>
+</div>
+<p><a id="plan_link" target="_blank">Link to Plan</a></p>
+<div id="error_list">
+
+</div>
+</body>
+</html>
