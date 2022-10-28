@@ -34,10 +34,10 @@ function form_to_url() {
     if (current_plan.workers.length < 1) {
         error_list += "not enough workers\n"
     }
-    if (current_plan.duties.length != 2) {
+    if (duty_length_not_allowed(current_plan.duties)) {
         error_list += "only two duties are currently supported\n"
     }
-    if (current_plan.duties.length != current_plan.offsets.length) {
+    if (current_plan.duties.length !== current_plan.offsets.length) {
         error_list += "duties and offsets must have the same number of lines!\n"
     }
     for (let i = 0; i < current_plan.offsets.length; i++) {
