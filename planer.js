@@ -24,7 +24,7 @@ function process_plan() {
         return
     }
 
-    if (current_plan.duties.length != 2) {
+    if (duty_length_not_allowed(current_plan.duties)) {
         console.log("currently unsupported number of duties")
         return
     }
@@ -37,11 +37,13 @@ function process_plan() {
     a_duty_title.innerText = current_plan.duties[0]
     let date_title = document.createElement("th")
     date_title.innerText = "Date"
-    let b_duty_title = document.createElement("th")
-    b_duty_title.innerText = current_plan.duties[1]
     top_row.appendChild(a_duty_title)
     top_row.appendChild(date_title)
-    top_row.appendChild(b_duty_title)
+    if (current_plan.duties.length > 1) {
+        let b_duty_title = document.createElement("th")
+        b_duty_title.innerText = current_plan.duties[1]
+        top_row.appendChild(b_duty_title)
+    }
     table.appendChild(top_row)
 
     console.log(current_plan.start_date)
@@ -59,7 +61,9 @@ function process_plan() {
         b_duty.classList.add("duty_b_td")
         row.appendChild(a_duty)
         row.appendChild(date)
-        row.appendChild(b_duty)
+        if (current_plan.duties.length > 1) {
+            row.appendChild(b_duty)
+        }
         table.appendChild(row)
     }
     document.getElementById("duty_table").appendChild(table)

@@ -14,6 +14,10 @@ function date_to_str(date) {
     return date.toISOString().substring(0, 10)
 }
 
+const duty_length_not_allowed = (object) => {
+    return object.length < 1 && object.length > 2
+}
+
 function load_hash_data() {
     hash = window.location.hash.substring(1);
 
