@@ -70,9 +70,9 @@ function process_plan() {
 
     next_plan = JSON.parse(JSON.stringify(current_plan));
     next_plan.start_date = offset_date_by_weeks(current_plan.start_date, weeks_per_sheet).toISOString()
-    for (let i = 0; i < next_plan.offsets.length; i++) [
+    for (let i = 0; i < next_plan.offsets.length; i++) {
         next_plan.offsets[i] = (current_plan.offsets[i] + weeks_per_sheet) % current_plan.workers.length
-    ]
+    }
     let url = document.location.toString().split("#")[0]
     url += "#" + generate_hash(next_plan)
     document.getElementById("next_plan_link").href = url
