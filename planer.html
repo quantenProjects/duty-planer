@@ -16,6 +16,12 @@
 <div class="header">
     <h1>Duty Plan</h1>
 </div>
+<div class="no-print">
+    <textarea id="share_text" readonly cols="50" rows="4" onfocus="this.select();" onmouseup="return false;"></textarea>
+    <br>
+    <button onclick="navigator.share({'text': document.getElementById('share_text').value})">Share Text</button>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('share_text').value)">Copy Text</button>
+</div>
 <div class="header">
     <p>To generate the next plan:</p>
     <ol>

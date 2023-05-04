@@ -48,13 +48,18 @@ function process_plan() {
 
     console.log(current_plan.start_date)
 
+    let share_text = "current plan doesn't include today"
+    let today = new Date()
+
     for (let i = 0; i < weeks_per_sheet; i++) {
+        let start_of_week = offset_date_by_weeks(current_plan.start_date, i)
+        let end_of_week = offset_date_by_weeks(current_plan.start_date, i, 6)
         let row = document.createElement("tr")
         let a_duty = document.createElement("td")
         a_duty.innerText = current_plan.workers[(current_plan.offsets[0] + i) % current_plan.workers.length]
         a_duty.classList.add("duty_a_td")
         let date = document.createElement("td")
-        date.innerText = date_to_str(offset_date_by_weeks(current_plan.start_date, i)) + " to " + date_to_str(offset_date_by_weeks(current_plan.start_date, i, 6)).substring(7)
+        date.innerText = date_to_str(start_of_week) + " to " + date_to_str(end_of_week).substring(7)
         date.classList.add("date_td")
         let b_duty = document.createElement("td")
         b_duty.innerText = current_plan.workers[(current_plan.offsets[1] + i) % current_plan.workers.length]
@@ -65,6 +70,16 @@ function process_plan() {
             row.appendChild(b_duty)
         }
         table.appendChild(row)
+
+        if (start_of_week <= today && today <= end_of_week) {
+            share_text = "From " + date_to_str(start_of_week) + " to " + date_to_str(end_of_week) + "\n"
+            share_text += current_plan.duties[0] + ": " + current_plan.workers[(current_plan.offsets[0] + i) % current_plan.workers.length]
+            if (current_plan.duties.length > 1) {
+                share_text += "\n" + current_plan.duties[1] + ": " + current_plan.workers[(current_plan.offsets[1] + i) % current_plan.workers.length]
+            }
+        }
+        console.log(share_text)
+
     }
     document.getElementById("duty_table").appendChild(table)
 
@@ -76,6 +91,8 @@ function process_plan() {
     let url = document.location.toString().split("#")[0]
     url += "#" + generate_hash(next_plan)
     document.getElementById("next_plan_link").href = url
+
+    document.getElementById("share_text").value = share_text
 
     update_location_hash()
 }
