@@ -2,33 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Settings Planer</title>
+    <title>Settings of Duty Planer</title>
     <script type="application/javascript" src="settings.js"></script>
     <script type="application/javascript" src="common.js"></script>
 </head>
 <body onload="startup()">
 <div>
     <div>
-        <p><label for="workers">Workers</label></p>
-        <p>one worker per line</p>
+        <h1><label for="workers">Workers</label></h1>
+        <p>One worker per line.</p>
+        <p>Empty lines will be ignored.</p>
+        <p>If you want different worker pools for different duties, separate pools by a line with <code>---</code> (three hyphen-minus).</p>
         <textarea id="workers" oninput="onformchange()" rows="20"></textarea>
     </div>
     <div>
-        <p><label for="duties">Duties</label></p>
-        <p>one duty name per line, currently only one or two are supported</p>
+        <h1><label for="duties">Duties</label></h1>
+        <p>One duty name per line, currently only one or two are supported</p>
         <textarea id="duties" oninput="onformchange()" rows="3"></textarea>
     </div>
     <div>
-        <p><label for="offsets">Offsets</label></p>
-        <p>offsets for the duties, must be the same number of lines as duties, start counting from 0</p>
+        <h1><label for="offsets">Offsets</label></h1>
+        <p>Offsets for the duties, start counting from 0.</p>
+        <p>Must be the same number of lines as duties.</p>
         <textarea id="offsets" oninput="onformchange()" rows="3"></textarea>
     </div>
     <div>
-        <label for="start_date">Start Date</label>
+        <label for="start_date">Start date</label>
         <input type="date" id="start_date" oninput="onformchange()">
     </div>
 </div>
-<p><a id="plan_link" target="_blank">Link to Plan</a></p>
+<p><a id="plan_link" target="_blank" style="font-size: 200%">Link to Plan</a></p>
 <div id="error_list">
 
 </div>

@@ -15,23 +15,33 @@ function date_to_str(date) {
 }
 
 const duty_length_not_allowed = (object) => {
-    return object.length < 1 && object.length > 2
+    return object.length < 1 || object.length > 2
+}
+
+function default_data() {
+    const defaultd = {
+        "v": 2,
+        "workers": [["Hans", "Peter", "Gunter"], ["Julia", "Anne", "Lina"]],
+        "start_date": (new Date()).toISOString(),
+        "duties": ["Kitchen", "Trash"],
+        "offsets": [0, 2]
+    }
+    return JSON.parse(JSON.stringify(defaultd))
 }
 
 function load_hash_data() {
     hash = window.location.hash.substring(1);
 
-    if (hash.length == 0) {
+    if (hash.length === 0) {
         console.log("no data in fragment, use default")
-        current_plan = {
-            "v": 1,
-            "workers": ["Hans", "Peter", "Gunter", "Julia", "Anne", "Lina"],
-            "start_date": (new Date()).toISOString(),
-            "duties": ["Kitchen", "Trash"],
-            "offsets": [0, 3]
-        }
+        current_plan = default_data()
     } else {
-        current_plan = JSON.parse(decodeURIComponent(hash))
+        try {
+            current_plan = JSON.parse(decodeURIComponent(hash))
+        } catch (e) {
+            alert("The data in the uri was corrupted. loading default data")
+            current_plan = default_data()
+        }
         console.log("loaded data")
     }
 
